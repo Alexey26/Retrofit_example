@@ -27,8 +27,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private ItemBinding binding;
 
-        public ViewHolder(View v) {
-            super(v);
+        public ViewHolder(ItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 
@@ -42,13 +43,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item, parent, false);
-        return new ViewHolder(binding.getRoot());
+        return new ViewHolder(binding);
 
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.binding.age.setText("" + users.get(position).getAge());
+        holder.binding.age.setText(""+users.get(position).getAge());
         holder.binding.name.setText(users.get(position).getName());
         Glide.with(holder.itemView).load(users.get(position).getImage()).into(holder.binding.profileImage);
 

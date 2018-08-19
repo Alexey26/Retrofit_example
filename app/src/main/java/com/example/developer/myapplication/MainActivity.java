@@ -18,7 +18,6 @@ import io.reactivex.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private Adapter adapter;
-    private ArrayList<User> user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
